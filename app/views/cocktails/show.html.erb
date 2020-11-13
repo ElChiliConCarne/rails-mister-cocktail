@@ -3,18 +3,19 @@
 
   <ul class="list-group">
   <% @cocktail.doses.each do |dose| %>
-    <li class="list-group-item"><%= dose.description %> <%= dose.ingredient.name %></li>
+    <li class="list-group-item"><%= dose.description %> <%= dose.ingredient.name %>
 
     <%= link_to "Delete #{dose.description}",
             dose_path(dose),
             method: :delete,
             data: { confirm: "Are you sure?" } %>
   <% end %>
-
+    </li>
   </ul>
 
+  <%= cl_image_tag @cocktail.photo.key, height: 300, width: 400, crop: :fill %>
 
-  </li>
+
   <%= link_to "<-Back to the cocktails list", cocktails_path, class: "btn btn-primary"%>
 
   <%= link_to "+ Add recipee", new_cocktail_dose_path(@cocktail), class: "btn btn-primary"%>
