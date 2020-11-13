@@ -4,9 +4,17 @@
   <ul class="list-group">
   <% @cocktail.doses.each do |dose| %>
     <li class="list-group-item"><%= dose.description %> <%= dose.ingredient.name %></li>
+
+    <%= link_to "Delete #{dose.description}",
+            dose_path(dose),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
   <% end %>
 
   </ul>
+
+
+  </li>
   <%= link_to "<-Back to the cocktails list", cocktails_path, class: "btn btn-primary"%>
 
   <%= link_to "+ Add recipee", new_cocktail_dose_path(@cocktail), class: "btn btn-primary"%>
